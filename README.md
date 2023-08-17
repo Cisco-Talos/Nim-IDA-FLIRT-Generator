@@ -40,7 +40,7 @@ cd <NIM_CACHE_DIR>                                             # e.g. ..\nim-1.6
 python <PATH_TO_SCRIPT>\obj2patfile.py
 ```
 
-Now run the sigmake.exe tool from the FLAIR toolkit to generate the final signature file — just copy and paste it from the output of the obj2patfile.py script.
+Now run the `sigmake.exe` tool from the FLAIR toolkit to generate the final signature file — just copy and paste it from the output of the `obj2patfile.py` script.
 
 ```
 C:\tools\IDA\flair82\bin\win\sigmake.exe -n"nim-1612" sdigitsutils.nim.c.pat+swin_setenv.nim.c.pat+ssystem.nim.c.pat+sassertions.nim.c.pat+sdollars.nim.c.pat+sio.nim.c.pat+swidestrs.nim.c.pat+swinlean.nim.c.pat+malgorithm.nim.c.pat+mbrowsers_hu.nim.c.pat+mcstrutils_hu.nim.c.pat+mdollars.nim.c.pat+mdynlib.nim.c.pat+mformatfloat.nim.c.pat+mio.nim.c.pat+mio_hu.nim.c.pat+mmath.nim.c.pat+mmath_hu.nim.c.pat+mos.nim.c.pat+mosproc_hu.nim.c.pat+mparsecfg_hu.nim.c.pat+mparseopt_hu.nim.c.pat+mparseutils.nim.c.pat+mparseutils_hu.nim.c.pat+mpathnorm.nim.c.pat+mropes_hu.nim.c.pat+mstreams.nim.c.pat+mstrtabs_hu.nim.c.pat+mstrutils.nim.c.pat+mstrutils_hu.nim.c.pat+mtimes.nim.c.pat+municode_hu.nim.c.pat+mwidestrs.nim.c.pat nim-1612.sig
