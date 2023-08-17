@@ -52,7 +52,7 @@ There will be some collisions, which is expected. You need to delete the comment
 C:\tools\IDA\flair82\bin\win\sigmake.exe -n"nim-1612" sdigitsutils.nim.c.pat+swin_setenv.nim.c.pat+ssystem.nim.c.pat+sassertions.nim.c.pat+sdollars.nim.c.pat+sio.nim.c.pat+swidestrs.nim.c.pat+swinlean.nim.c.pat+malgorithm.nim.c.pat+mbrowsers_hu.nim.c.pat+mcstrutils_hu.nim.c.pat+mdollars.nim.c.pat+mdynlib.nim.c.pat+mformatfloat.nim.c.pat+mio.nim.c.pat+mio_hu.nim.c.pat+mmath.nim.c.pat+mmath_hu.nim.c.pat+mos.nim.c.pat+mosproc_hu.nim.c.pat+mparsecfg_hu.nim.c.pat+mparseopt_hu.nim.c.pat+mparseutils.nim.c.pat+mparseutils_hu.nim.c.pat+mpathnorm.nim.c.pat+mropes_hu.nim.c.pat+mstreams.nim.c.pat+mstrtabs_hu.nim.c.pat+mstrutils.nim.c.pat+mstrutils_hu.nim.c.pat+mtimes.nim.c.pat+municode_hu.nim.c.pat+mwidestrs.nim.c.pat nim-1612.sig
 ```
 
-Now that you have a valid IDA signature file (_nim-1612.sig_), the last step is to copy this over to the IDA signature directory (e.g. _C:\Program Files\IDA Pro 8.2\sig\pc_). You can load these signatures when you are analyzing a Nim executable in IDA via the _File/Load File/FLIRT Signature file…_ menu. 
+Now that you have a valid IDA signature file (`nim-1612.sig`), the last step is to copy this over to the IDA signature directory (e.g. `C:\Program Files\IDA Pro 8.2\sig\pc`). You can load these signatures when you are analyzing a Nim executable in IDA via the _File/Load File/FLIRT Signature file…_ menu. 
 
 Happy reversing !
 
