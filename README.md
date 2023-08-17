@@ -10,7 +10,7 @@ You can find a detailed description of the tools and our research in the HexRays
 
 **These scripts and the whole workflow is written for the Windows OS. It may run on other platforms, but is not explicitly supported. It is also mandatory to use the default compiler for Nim on Windows: [MinGW](https://www.mingw-w64.org/). This is required because we are using the `-ffunction-sections` option of MinGW. We used Python 3.10.5 on Windows 11 for our tests.** 
 
-Before executing, you have to edit the _nim_rtl_builder.py_ script and change some variables, of which only the first one is mandatory. You then must change to the _\lib\pure_ directory of your Nim installation (e.g. _..\nim-1.6.12\lib\pure_).
+Before executing, you have to edit the `nim_rtl_builder.py` script and change some variables, of which only the first one is mandatory. You then must change to the `\lib\pure` directory of your Nim installation (e.g. `..\nim-1.6.12\lib\pure`).
 
 ```
 OBJ2PATFILE          = "C:\\tools\\Nim\\src\\obj2patfile.py"  # The path to the next script
