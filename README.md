@@ -33,7 +33,7 @@ COFFPARSER  = "C:\\tools\\Nim\\src\\coffparser.py"              # Path to coffpa
 SIGMAKE     = "C:\\tools\\IDA\\flair82\\bin\\win\\sigmake.exe"  # Path to HexRays SDK sigmake executable
 ```
 
-**Make sure you changed the directory to the Nim cache directory before running the _obj2patfile.py_ script.** As a reminder, the cache directory name was set in the _nim_rtl_builder.py_ script above.
+**Make sure you changed the directory to the Nim cache directory before running the `obj2patfile.py` script.** As a reminder, the cache directory name was set in the `nim_rtl_builder.py` script above.
 
 ```
 cd <NIM_CACHE_DIR>                                             # e.g. ..\nim-1.6.12\lib\pure\HU_nim_cache
