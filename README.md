@@ -23,9 +23,9 @@ cd <NIM_INSTALL_DIR>\lib\pure                                 # e.g. C:\Users\hu
 python <PATH_TO_SCRIPT>\nim_rtl_builder.py                    
 ```
 
-These steps build the executables from our fake RTL source code and with that, also the object files in the Nim cache directory, which we need for the next stage.
+These steps build the executables from our fake RTL source code, in addition to the object files in the Nim cache directory, which we need for the next stage.
 
-Now you can parse all generated COFF object files (.o) in the Nim compiler cache directory by executing the _obj2patfile.py_ script. Again, you need to set the right paths in the header of the _obj2patfile.py_ script first. 
+Now you can parse all generated COFF object files (`.o`) in the Nim compiler cache directory by executing the `obj2patfile.py` script. Again, you need to set the right paths in the header of the `obj2patfile.py` script first. 
 
 ```
 NIM_SIGNAME = "nim-1612"                                        # signature filename - no underscores or blanks are allowed
