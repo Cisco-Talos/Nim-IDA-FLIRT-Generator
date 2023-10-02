@@ -1,5 +1,7 @@
 nim-1612-release-opt-size.sig		# FLIRT signature file for Nim 1.6.12 compiled with opt:size and release switch
 nim-1612-release-opt-speed.sig		# FLIRT signature file for Nim 1.6.12 compiled with opt:speed and release switch
+nimplant-optsize-211.sig		# Nimplant malware signatures for Nim version 2.1.1
+offensive-nim-1612.sig			# Offensive Nim malware signatures
 
 
 
