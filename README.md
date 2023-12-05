@@ -6,11 +6,11 @@ To fully automate the signature-generating process and for educational purposes,
 
 You can find a detailed description of the tools and our research in the [HexRays guest blog](https://hex-rays.com/blog/plugin-focus-generating-signatures-for-nim-and-other-non-c-programming-languages). If this is _tl;dr_ here is a short summary:
 
-## Quick Steps to generate a Nim FLIRT signature
+## Quick Steps to generate a Nim FLIRT signature for below Nim 2.0.0, tested for 1.6.12
 
 **These scripts and the whole workflow is written for the Windows OS. It may run on other platforms, but is not explicitly supported. It is also mandatory to use the default compiler for Nim on Windows: [MinGW](https://www.mingw-w64.org/). This is required because we are using the `-ffunction-sections` option of MinGW. We used Python 3.10.5 on Windows 11 for our tests.** 
 
-Before executing, you have to edit the `nim_rtl_builder.py` script and change some variables, of which only the first one is mandatory. You then must change to the `\lib\pure` directory of your Nim installation (e.g. `..\nim-1.6.12\lib\pure`).
+Before executing, you have to edit the `nim_rtl_builder_<Nim version>.py` script and change some variables, of which only the first one is mandatory. You then must change to the `\lib\pure` directory of your Nim installation (e.g. `..\nim-1.6.12\lib\pure`).
 
 ```
 OBJ2PATFILE          = "C:\\tools\\Nim\\src\\obj2patfile.py"  # The path to the next script
@@ -20,7 +20,7 @@ NIM_CACHE_DIR        = 'HU_nim_cache'                         # The directory na
 
 ```
 cd <NIM_INSTALL_DIR>\lib\pure                                 # e.g. C:\Users\hunte\.choosenim\toolchains\nim-1.6.12\lib\pure
-python <PATH_TO_SCRIPT>\nim_rtl_builder.py                    
+python <PATH_TO_SCRIPT>\nim_rtl_builder<Nim version>.py                    
 ```
 
 These steps build the executables from our fake RTL source code, in addition to the object files in the Nim cache directory, which we need for the next stage.
@@ -33,7 +33,7 @@ COFFPARSER  = "C:\\tools\\Nim\\src\\coffparser.py"              # Path to coffpa
 SIGMAKE     = "C:\\tools\\IDA\\flair82\\bin\\win\\sigmake.exe"  # Path to HexRays SDK sigmake executable
 ```
 
-**Make sure you changed the directory to the Nim cache directory before running the `obj2patfile.py` script.** As a reminder, the cache directory name was set in the `nim_rtl_builder.py` script above.
+**Make sure you changed the directory to the Nim cache directory before running the `obj2patfile.py` script.** As a reminder, the cache directory name was set in the `nim_rtl_builder_<Nim version>.py` script above.
 
 ```
 cd <NIM_CACHE_DIR>                                             # e.g. ..\nim-1.6.12\lib\pure\HU_nim_cache
@@ -57,6 +57,27 @@ Now that you have a valid IDA signature file (`nim-1612.sig`), the last step is 
 Happy reversing !
 
 
+## Quick Steps to generate a Nim FLIRT signature for above Nim 2.0.0, tested with 2.0.0
+
+**The steps for Nim 2.0.0 have significantly changed. Due to the architectural chnages of Nim 2.0.0.**
+
+**These scripts and the whole workflow is written for the Windows OS. It may run on other platforms, but is not explicitly supported. It is also recommended to use the default compiler for Nim on Windows: [MinGW](https://www.mingw-w64.org/). We used Python 3.10.5 on Windows 11 for our tests.** 
+
+Before executing, you have to edit the `nim_rtl_builder_2000.py` script and check/edit the path variables in the head of the script. Then you must change to the `\lib\pure` directory of your Nim installation (e.g. `..\nim-2.0.0\lib\pure`).
+
+1. Change to the `\lib\pure` directory and execute the `nim_rtl_builder_2000.py`, it will built the `mynimfile.exe`
+
+2. Now load `mynimfile.exe` into IDA, run the Flare `Create PAT from the database` ([idb2pat](https://github.com/mandiant/flare-ida)) plugin to generate the 'mynimfile.pat' file.
+
+3. Open the generated `mynimfile.pat` file in a text editor and delete the broken `NimMainModule` signature, because sigmake can't handle it.This is usually from where the broken `NimMainModule` signature starts to the second valid `NimMain` signature. The broken `NimMainModule` signature start line number can be found by running the sigmake command below. This will cause a `Bad xdigit` error, which includes the line number. Step 2. is only neccessary if you run into the 'Bad xdigit' error
+
+4. Then run: C:\tools\IDA\flair82\bin\win\sigmake.exe -n"Nim-2000-release-opt-speed" mynimfile.pat nim-2000-release-opt-speed.sig
+
+5. If there are collision (there will be), delete the comments (first four lines) in the `nim-2000-release-opt-speed.exc` file and re-run the sigmake command
+
+6. Copy the nim-2000-release-opt-speed.sig file over to your IDA signature directory, e.g <IDA-INSTALL-DIR>\sig\pc.
+
+7. Load your Nim malware into IDA and load the generated Nim signature via the `File/Load File/FLIRT Signature file` menu. Done.
 
 
 
